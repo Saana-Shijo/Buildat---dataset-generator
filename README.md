@@ -1,134 +1,327 @@
-# Buildat---dataset-generator
+# Buildat — AI Dataset Generator
 
-Problem
+## Problem Statement
 
-Finding high-quality, labeled, and domain-specific datasets for Machine Learning is difficult. Most online data is scattered, unstructured, and requires significant manual cleaning before it can be used for AI/ML tasks. Existing scraping tools mainly focus on extracting data but do not provide complete ML-ready datasets automatically.
+Finding high-quality, labeled, and domain-specific datasets for Machine Learning is difficult. Most online data is scattered, unstructured, and requires significant manual cleaning before it can be used for AI/ML tasks.
 
-Solution
+Existing scraping tools mainly focus on extracting raw data but do not automatically generate complete ML-ready datasets.
 
-This project is an AI-powered Dataset Generator that automatically collects web data, processes it, performs sentiment labeling using local LLMs, and exports structured datasets in CSV format.
+---
 
-The system:
+# Solution
 
-Scrapes real-world game and review data from Steam
-Cleans and structures collected information
-Uses Ollama-based AI models for sentiment analysis
-Generates ML-ready labeled datasets automatically
+Buildat Dataset Generator is an AI-powered automated dataset generation system that:
 
-The project provides an end-to-end pipeline for dataset generation with minimal manual effort.
+- Scrapes real-world data from Steam and IMDb
+- Cleans and structures collected information
+- Uses local LLMs through Ollama for sentiment analysis
+- Automatically generates labeled CSV datasets
 
-Setup
-1. Clone Repository
-git clone <your-repo-link>
+The project provides a complete end-to-end pipeline for creating ML-ready datasets with minimal manual effort.
+
+---
+
+# Features
+
+- Automated dataset generation
+- Steam game metadata scraping
+- IMDb review scraping
+- AI-powered sentiment analysis
+- Fully local AI inference using Ollama
+- CSV dataset export
+- NanoBot skill integration
+- ML-ready structured datasets
+- Confidence score and rating generation
+
+---
+
+# Tech Stack
+
+## Core Technologies
+
+- Python
+- NanoBot Skills Framework
+- Ollama
+- Selenium
+- Pandas
+- Steam Web APIs
+
+---
+
+## AI Models Used
+
+| Model | Purpose |
+|------|------|
+| Phi-3 | IMDb review sentiment classification |
+| Llama 3.2 : 3B | Steam game sentiment labeling and scoring |
+
+---
+
+## Libraries Used
+
+```bash
+pandas
+selenium
+requests
+webdriver-manager
+langchain-ollama
+json
+csv
+argparse
+```
+
+---
+
+# System Architecture
+
+```text
+User Query
+   ↓
+NanoBot Skill Triggered
+   ↓
+Steam API / IMDb Scraper
+   ↓
+Collect Reviews + Metadata
+   ↓
+Local LLM (Ollama)
+Sentiment Classification
+   ↓
+Structured Dataset Creation
+   ↓
+Pandas Processing
+   ↓
+CSV Dataset Generated
+```
+
+---
+
+# Project Structure
+
+```text
+dataset-generator/
+│
+├── generate_csv_dataset.py
+├── steam_csv_scraper.py
+├── imdb_real_reviews.csv
+├── README.md
+│
+└── ~/.nanobot/
+    ├── skills/
+    └── workspace/
+        └── datasets/
+```
+
+---
+
+# Setup Instructions
+
+## 1. Clone Repository
+
+```bash
+git clone <repository-link>
 cd dataset-generator
-2. Install Dependencies
+```
+
+---
+
+## 2. Install Dependencies
+
+```bash
 pip install pandas selenium requests webdriver-manager langchain-ollama
-3. Install Ollama
+```
 
-Install and run Ollama locally:
+---
 
-Ollama Official Website
+## 3. Install Ollama
 
-Pull required models:
+Download and install Ollama:
 
+https://ollama.com
+
+---
+
+## 4. Pull Required Models
+
+```bash
 ollama pull phi3
 ollama pull llama3.2:3b
-4. Start Ollama Server
+```
+
+---
+
+## 5. Start Ollama Server
+
+```bash
 ollama serve
-5. Configure NanoBot Workspace
+```
 
-Ensure NanoBot directories exist:
+---
 
+## 6. Configure NanoBot Workspace
+
+Create required NanoBot directories:
+
+```bash
 mkdir -p ~/.nanobot/skills
 mkdir -p ~/.nanobot/workspace/datasets
-6. Add Skill Files
+```
 
-Place:
+---
 
+## 7. Add Skill Files
+
+Place the following files inside:
+
+```bash
+~/.nanobot/skills/
+```
+
+Files:
+
+```text
 generate_csv_dataset.py
 steam_csv_scraper.py
+```
 
-inside:
+---
 
-~/.nanobot/skills/
+## 8. Make Scripts Executable
 
-Make scripts executable:
-
+```bash
 chmod +x ~/.nanobot/skills/*.py
+```
 
-Instructions
+---
 
+# Usage
 
-Run the dataset generation skill.
+## Generate Dataset
 
+Example:
 
-Enter:
+```bash
+python generate_csv_dataset.py '{"query":"RPG","limit":10}'
+```
 
+---
 
-Game genre/query
+# Workflow
 
+The system automatically:
 
-Dataset size limit
+1. Scrapes Steam game data
+2. Extracts reviews and metadata
+3. Performs AI sentiment analysis
+4. Labels data using Ollama models
+5. Generates structured CSV datasets
 
+---
 
+# Output
 
+The system generates:
 
-NanoBot automatically:
+- CSV dataset files
+- Sentiment labels
+- Confidence scores
+- Ratings
+- Game metadata
 
+Example output file:
 
-Scrapes Steam data
-
-
-Extracts reviews
-
-
-Performs AI sentiment analysis
-
-
-Creates a CSV dataset
-
-
-
+```text
+steam_RPG_20260508.csv
+```
 
 Generated datasets are saved in:
 
-
+```bash
 ~/.nanobot/workspace/datasets
+```
 
-Usage
-Generate Dataset
-Example:
-python generate_csv_dataset.py '{"query":"RPG","limit":10}'
-Output
-The system generates:
+---
 
+# Dataset Fields
 
-CSV dataset file
+| Field | Description |
+|------|------|
+| game_name | Name of the game |
+| description | Game description |
+| genres | Game genres |
+| price | Game price |
+| sentiment | AI-generated sentiment |
+| confidence | Confidence score |
+| rating | Sentiment-based rating |
+| quality | Quality classification |
+| recommend | Recommendation result |
+| collected_at | Timestamp |
 
+---
 
-Sentiment labels
+# IMDb Review Dataset
 
+The project also supports IMDb review scraping using Selenium.
 
-Confidence scores
+### Features
 
+- Dynamic browser automation
+- Real review extraction
+- AI-based sentiment labeling
+- CSV export
 
-Ratings and metadata
+Example output:
 
+```text
+imdb_real_reviews.csv
+```
 
-Example generated file:
-steam_RPG_20260508.csv
-Open Dataset
-Datasets can be used with:
+---
 
+# Example Use Cases
 
-Excel
+- Sentiment Analysis
+- NLP Model Training
+- Recommendation Systems
+- Review Classification
+- Data Mining
+- Machine Learning Projects
 
+---
 
-Pandas
+# Tools for Viewing Datasets
 
+Generated datasets can be opened using:
 
-Jupyter Notebook
+- Excel
+- Pandas
+- Jupyter Notebook
+- Google Sheets
+- Power BI
 
+---
 
-Power BI
+# Key Highlights
 
+- Fully local AI pipeline
+- No cloud dependency
+- Automated ML dataset generation
+- Real-world data collection
+- End-to-end workflow automation
+- Easily scalable architecture
+
+---
+
+# Future Improvements
+
+- Multi-platform scraping support
+- More dataset export formats
+- Advanced NLP labeling
+- Real-time dataset dashboard
+- Distributed scraping system
+- GPU acceleration support
+
+---
+
+# Authors
+
+Buildat Team
