@@ -118,7 +118,7 @@ dataset-generator/
 ## 1. Clone Repository
 
 ```bash
-git clone <repository-link>
+git clone <[repository-link](https://github.com/Saana-Shijo/Buildat---dataset-generator)>
 cd dataset-generator
 ```
 
