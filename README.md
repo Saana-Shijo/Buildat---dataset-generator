@@ -100,9 +100,9 @@ CSV Dataset Generated
 ```text
 dataset-generator/
 │
-├── generate_csv_dataset.py
-├── steam_csv_scraper.py
-├── imdb_real_reviews.csv
+├── games_review.py
+├── movies_review.py
+├── nano_skills.py
 ├── README.md
 │
 └── ~/.nanobot/
@@ -308,17 +308,6 @@ Generated datasets can be opened using:
 - Real-world data collection
 - End-to-end workflow automation
 - Easily scalable architecture
-
----
-
-# Future Improvements
-
-- Multi-platform scraping support
-- More dataset export formats
-- Advanced NLP labeling
-- Real-time dataset dashboard
-- Distributed scraping system
-- GPU acceleration support
 
 ---
 
